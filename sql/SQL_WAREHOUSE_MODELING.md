@@ -50,34 +50,35 @@ Advanced Merchant-Health Segmentation (v_dim_sellers_enriched): Programmatically
 ### 5. Relational Architecture & Schema Mapping
 The core database design is mapped below, explicitly showcasing how the Fact and Dimension tables interact through strict Primary Key (PK) and Foreign Key (FK) constraints:
 
-* **v_fact_order_items (Order Items Line-Granularity Fact):**
+**v_fact_order_items (Order Items Line-Granularity Fact):**
 
-Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles multi-item orders).
+* Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles multi-item orders).
 
-Connected to v_dim_products via product_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
+* Connected to v_dim_products via product_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
 
-Connected to v_dim_sellers_enriched via seller_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
+* Connected to v_dim_sellers_enriched via seller_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
 
-v_fact_payments (Payments Fact):
+**v_fact_payments (Payments Fact):**
 
-Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles split payment methods per order).
+* Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles split payment methods per order).
 
-v_fact_reviews (Customer Reviews Fact):
+**v_fact_reviews (Customer Reviews Fact):**
 
-Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
+* Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
 
 2. Spatial / Role-Playing Dimension Mapping
-v_dim_geolocation (Master Spatial Lookup):
+
+**v_dim_geolocation (Master Spatial Lookup):**
 
 Acts as a shared reference boundary for both buyers and merchants.
 
-Connected to v_dim_customers via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.
+* Connected to v_dim_customers via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.
 
-Connected to v_dim_sellers_enriched via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.
+* Connected to v_dim_sellers_enriched via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.
 
 3. Enriched Behavioral Dimensions
 
-v_dim_sellers_enriched (Advanced Merchant Profile):
+**v_dim_sellers_enriched (Advanced Merchant Profile):**
 
 Formed via a physical server-side INNER JOIN between stg_sellers and dim_sellers_rfm on seller_id.
 
