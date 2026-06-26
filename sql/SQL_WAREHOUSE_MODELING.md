@@ -50,7 +50,7 @@ Advanced Merchant-Health Segmentation (v_dim_sellers_enriched): Programmatically
 ### 5. Relational Architecture & Schema Mapping
 The core database design is mapped below, explicitly showcasing how the Fact and Dimension tables interact through strict Primary Key (PK) and Foreign Key (FK) constraints:
 
-v_fact_order_items (Order Items Line-Granularity Fact):
+* **v_fact_order_items (Order Items Line-Granularity Fact):**
 
 Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles multi-item orders).
 
