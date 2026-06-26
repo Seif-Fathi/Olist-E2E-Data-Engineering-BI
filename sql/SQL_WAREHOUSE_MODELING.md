@@ -5,7 +5,7 @@
 
 Adhering to enterprise relational database design standards, the raw staging layer (`stg_`) was systematically re-architected inside SQL Server (SSMS) into a high-performance **Star Schema**. This phase guarantees data integration, mathematical lineage stability, and sub-second query execution loops during Power BI ingestion.
 
-The complete production DDL script, constraint mappings, and optimized views are cataloged in [`Olist_Star_Schema_and_Views.sql`](./sql/Olist_Star_Schema_and_Views.sql).
+The complete production DDL script, constraint mappings, and optimized views are cataloged in [`Olist_Star_Schema_and_Views.sql`](https://github.com/Seif-Fathi/Olist-E2E-Data-Engineering-BI/blob/main/sql/Olist_Star_Schema_and_Views.sql).
 
 ---
 
