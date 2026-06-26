@@ -1,7 +1,7 @@
 ## Phase 2: Data Warehousing, Relational Architecture & DDL Transformations
 
 ---
-**Visual Schema Verification:** To view the complete physical ER layout and visual entity relationships generated directly from SQL Server, check out the architecture map here: [`star_schema_diagram.png`](./sql/Star_schema_ER_digram.png).
+**Visual Schema Verification:** To view the complete physical ER layout and visual entity relationships generated directly from SQL Server, check out the architecture map here: [`star_schema_diagram.png`](https://github.com/Seif-Fathi/Olist-E2E-Data-Engineering-BI/blob/main/sql/Star_schema_ER_digram.png).
 
 Adhering to enterprise relational database design standards, the raw staging layer (`stg_`) was systematically re-architected inside SQL Server (SSMS) into a high-performance **Star Schema**. This phase guarantees data integration, mathematical lineage stability, and sub-second query execution loops during Power BI ingestion.
 
