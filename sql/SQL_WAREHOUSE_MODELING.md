@@ -52,19 +52,19 @@ The core database design is mapped below, explicitly showcasing how the Fact and
 
 **v_fact_order_items (Order Items Line-Granularity Fact):**
 
-* Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles multi-item orders).
+* **Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles multi-item orders).**
 
-* Connected to v_dim_products via product_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
+* **Connected to v_dim_products via product_id (FK $\rightarrow$ PK). Relationship: Many-to-One.**
 
-* Connected to v_dim_sellers_enriched via seller_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
+* **Connected to v_dim_sellers_enriched via seller_id (FK $\rightarrow$ PK). Relationship: Many-to-One.**
 
 **v_fact_payments (Payments Fact):**
 
-* Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles split payment methods per order).
+* **Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One (Handles split payment methods per order).**
 
 **v_fact_reviews (Customer Reviews Fact):**
 
-* Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One.
+* **Connected to v_fact_orders via order_id (FK $\rightarrow$ PK). Relationship: Many-to-One.**
 
 2. Spatial / Role-Playing Dimension Mapping
 
@@ -72,9 +72,9 @@ The core database design is mapped below, explicitly showcasing how the Fact and
 
 Acts as a shared reference boundary for both buyers and merchants.
 
-* Connected to v_dim_customers via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.
+* **Connected to v_dim_customers via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.**
 
-* Connected to v_dim_sellers_enriched via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.
+* **Connected to v_dim_sellers_enriched via zip_code (PK $\rightarrow$ FK). Relationship: One-to-Many.**
 
 3. Enriched Behavioral Dimensions
 
