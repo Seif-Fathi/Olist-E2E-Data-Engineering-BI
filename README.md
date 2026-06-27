@@ -28,7 +28,7 @@ Click the link below to watch the live interactions, segment-level drill-through
 
 ## Project Architecture & Workflow
 
-[Production Python Notebook](./notebooks/olist E2E pipline.ipynb)
+![Production Python Notebook](./notebooks/olist E2E pipline.ipynb)
 
 ### Phase 1: Data Cleaning & Initial Handling (Python)
 Inspected 9 relational datasets, resolved missing values ($NaNs$), handled duplicate entries, and parsed corrupted datetime fields. Instead of blindly dropping rows or using standard mathematical imputations (like Mean/Median), data-driven business decisions were applied based on **Relational Integrity** and **Business Analytics principles**:
