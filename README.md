@@ -112,7 +112,7 @@ The resulting clusters were translated into business-friendly seller segments:
 Executed advanced T-SQL scripting directly in SSMS to transform raw staging data into an optimized **Star Schema Warehouse**:
 1. **Relational Integrity:** Defined strict **Primary Keys (PK)** and **Foreign Keys (FK)** across all entities.
 2. **Orphan Records Resolution:** Detected and handled 162 orphan ZIP codes found in Customer/Seller tables that didn't exist in the geolocation dataset using automated data imputation (Placeholder injection).
-3. **Enterprise Date Dimension (`dim_date`):** Built a recursive CTE script generating a full 1,096-day calendar dimension (2016-2018) complete with Years, Quarters, Months, Weekdays, and Weekend flags for robust Time-Intelligence reporting.
+3. **Date Dimension (`dim_date`):** Built a recursive CTE script generating a full 1,096-day calendar dimension (2016-2018) complete with Years, Quarters, Months, Weekdays, and Weekend flags for robust Time-Intelligence reporting.
 4. **Abstraction via Database Views:** Created custom, optimized SQL Views (`v_dim_*`, `v_fact_*`) to handle text casting, type conversions, and embedded **English Translations** for all Portuguese product categories via `LEFT JOIN` and `ISNULL` functions.
 
 ### SQL Engineering Challenges & Solutions
@@ -172,12 +172,12 @@ The database infrastructure is fully decoupled into **Fact** and **Dimension** l
 * **Semantic Layer Spatial Optimization (Role-Playing Dimensions):** While the aggregated geolocation dataset was stored as a single consolidated table in SQL Server to optimize database storage, it was decoupled into two distinct semantic tables inside Power Query to eliminate relationship ambiguity inside the BI Engine:
     * `v_customers_dim_geolocation`: Mapped directly to customer demographic dimensions for buyer spatial analytics.
     * `v_sellers_dim_geolocation`: Mapped exclusively to seller profiles to drive logistics and merchant distribution heatmaps independently.
-    * **Algorithmic Merchant Dimension Swap:** Replaced the static operational `stg_sellers` dimension table with the enriched machine-learning-derived `dim_sellers_rfm` dimension. This architectural swap embeds dynamic behavioral profiles (*Champions*, *Top Sellers*, *Active*, *Lost*) into the core data model, shifting the dashboard from generic operational tracking to advanced merchant-health analytical segmentations.
+    * **Machine Learning Seller Dimension:** Replaced the static operational `stg_sellers` dimension table with the enriched machine-learning-derived `dim_sellers_rfm` dimension. This architectural swap embeds dynamic behavioral profiles (*Champions*, *Top Sellers*, *Active*, *Lost*) into the core data model, shifting the dashboard from generic operational tracking to advanced merchant-health analytical segmentations.
 
 * **Advanced DAX & Metrics Engineering :** Built out complex time-intelligence and operational DAX measures (e.g., dynamic *Average Delivery Days*, YoY Growth, and automated KPI aggregations).
 For a complete formulas repository, architectural business logic, and exact DAX implementations of all explicit measures, check out the standalone [`Dax_measurements_dictionary.md`](./power_bi/Dax_measurements_dictionary.md) handbook.
 
-* **Enterprise UI/UX Dashboard Design:** Developed a multi-page, high-fidelity dark-themed report featuring dynamic visual storytelling across three core layers:
+* **UI/UX Dashboard Design:** Developed a multi-page, high-fidelity dark-themed report featuring dynamic visual storytelling across three core layers:
     
     * *Sales & Marketplace Performance:* High-level overview of revenue trends, product category share, and global geographical distribution, augmented with a custom Donut Chart for **Seller Segment Distribution**.
     
