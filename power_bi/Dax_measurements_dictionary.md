@@ -137,7 +137,7 @@ CALCULATE(
     CROSSFILTER(v_fact_orders[order_id], v_fact_order_items[order_id], Both)
 )
 
-**Note:** 
+**Implementation Note:** 
 "Utilized the CROSSFILTER function to temporarily enable a bi-directional (Both) relationship within the measure. This allows the filter context to flow 
 from the Orders table to the Order Items table without permanently enabling it in the Data Model, thereby maintaining optimal performance and preventing ambiguity or loops in circular relationships between Fact tables."
 
@@ -174,6 +174,23 @@ DAX Formula: Avg Sales per Seller = DIVIDE([Total Sales], [Active Sellers], 0)
 Business Question Answered: "What is the average sales volume generated per seller on our platform?"
 
 Target Departments / Stakeholders: Vendor Management (to ensure seller retention and platform loyalty).
+
+3- Sales by Seller Segment =
+CALCULATE (
+    [Total Sales],
+    CROSSFILTER (
+        v_fact_orders[order_id],
+        v_fact_order_items[order_id],
+        BOTH
+    )
+)
+Business Question Answered:
+"How much revenue does each seller segment contribute based on the current filter context?"
+
+Target Departments / Stakeholders:
+Sales Department, Marketplace Management, Business Intelligence Team, Executive Management.
+
+**Implementation Note:** CROSSFILTER is used to temporarily enable bidirectional filtering between v_fact_orders and v_fact_order_items during calculation, ensuring seller segment revenue correctly responds to filters such as Year, Product Category, Customer State, and other report slicers while preserving a clean single-direction star schema.
 
 ## 6. Time Intelligence
 
